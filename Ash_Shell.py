@@ -17,19 +17,19 @@ def main():
             commands.clear()
         elif inp == 'ver':
             print(ver)
-        elif '==' in inp and not inp[0:1] == 'if':
+        elif '==' in inp:
             inp = inp.split('==')
             print(commands.equalto(inp[0], inp[1]))
-        elif '!=' in inp and not inp[0:1] != 'if':
+        elif '!=' in inp:
             inp = inp.split('!=')
             print(commands.notequalto(inp[0], inp[1]))
-        elif '>' in inp and not inp[0:1] != 'if':
+        elif '>' in inp:
             inp = inp.split('>')
             print(commands.greaterthan(inp[0], inp[1]))
-        elif '<' in inp and not inp[0:1] != 'if':
+        elif '<' in inp:
             inp = inp.split('<')
             print(commands.lessthan(inp[0],inp[1]))
-        elif '<=' in inp and not inp[0:1] != 'if':
+        elif '<=' in inp:
             inp = inp.split('<=')
             print(commands.lessthanorequal(inp[0],inp[1]))
         elif inp[0:1] == 'if':

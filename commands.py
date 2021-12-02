@@ -35,7 +35,16 @@ exit - exits the shell
 **********
 ===Statement===
 if#statement#command - the command is run if the statement is true [if]
+=statement logic=
+-eq - equal to
+-neq - not equal to
+-gt - greater than
+-lt - less than
+-gtoeq - greater than or equal
+-ltoeq - less than or equal
 [Note: The [] in front of the defenition if the help command name, The name you use for this command ex***help "if",\nThe commands that doesn't have a [] are the ones you just type the command in as usual (help "help")]
+Example:
+if#1-eq1#put "hello"
 '''
 def ash_help():
     print(term.lightgreen(help_msg))
@@ -133,6 +142,8 @@ def execute_command(command):
                     print(term.lightgreen('help:Simple Arithmetic commands\nExample: 1[+]1, 1[-]1, 1[/]1, 1[*]1'))
                 elif command[cmd+1] == '"eql"':
                     print(term.lightgreen('help: the equal sign just prints out whether it is true or false\nExample:1==1'))
+                elif command[cmd+1] == '"if"':
+                    print(term.lightgreen('help: the if statement is just a normal if statement.\nexample:if#1-eq1#put "hello"'))
                 else:
                     print(term.lightgreen('help:obj/command not found'))
             elif command[cmd] == '':
@@ -207,23 +218,23 @@ def ifstatement(statement):
     st = statement[1]
     cmd = statement[2]
     st = str(st)
-    if '==' in st:
-        st = st.split('==')    
+    if '-eq' in st:
+        st = st.split('-eq')    
         run = equalto(st[0],st[1])
-    elif '!=' in st:
-        st = st.split('!=')
-        run = equalto(st[0], st[1])
-    elif '>' in st:
-        st = st.split('>')
+    elif '-neq' in st:
+        st = st.split('-neq')
+        run = notequalto(st[0], st[1])
+    elif '-gt' in st:
+        st = st.split('-gt')
         run = greaterthan(st[0],st[1])
-    elif '<' in st:
-        st = st.split('<')
+    elif '-lt' in st:
+        st = st.split('-lt')
         run = lessthan(st[0],st[1])
-    elif '<=' in st:
-        st = st.split('<=')
+    elif '-ltoeq' in st:
+        st = st.split('-ltoeq')
         run = lessthanorequal(st[0],st[1])
-    elif '>=' in st:
-        st = st.split('>=')
+    elif '-gtoeq' in st:
+        st = st.split('-gtoeq')
         run = greaterthanorequal(st[0],st[1])
     if run == True:
         execute_command(cmd)
