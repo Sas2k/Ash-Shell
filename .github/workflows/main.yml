@@ -22,7 +22,6 @@ jobs:
           architecture: x64
       - name: install dependancies and run
         run: | 
+          cd "D:\a\Ash-Shell\Ash-Shell"
           python -m pip install -r requirements.txt
           python Ash_Shell.py
-          exit
-          exit
