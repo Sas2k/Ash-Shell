@@ -125,6 +125,9 @@ def greaterthanorequal(s1,s2):
         greaterequal = False
     return greaterequal
 
+def test():
+    print('TESTING')
+
 def execute_command(command):
     if '|' not in command:
         command = command.split(' ')
