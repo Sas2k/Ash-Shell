@@ -32,7 +32,7 @@ def main():
         elif '<=' in inp:
             inp = inp.split('<=')
             print(commands.lessthanorequal(inp[0],inp[1]))
-        elif inp[0:1] == 'if':
+        elif 'if' in inp:
             commands.ifstatement(inp)
         else:
             commands.execute_command(inp)

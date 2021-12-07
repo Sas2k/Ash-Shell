@@ -221,25 +221,52 @@ def ifstatement(statement):
     st = statement[1]
     cmd = statement[2]
     st = str(st)
-    if '-eq' in st:
-        st = st.split('-eq')    
-        run = equalto(st[0],st[1])
-    elif '-neq' in st:
-        st = st.split('-neq')
-        run = notequalto(st[0], st[1])
-    elif '-gt' in st:
-        st = st.split('-gt')
-        run = greaterthan(st[0],st[1])
-    elif '-lt' in st:
-        st = st.split('-lt')
-        run = lessthan(st[0],st[1])
-    elif '-ltoeq' in st:
-        st = st.split('-ltoeq')
-        run = lessthanorequal(st[0],st[1])
-    elif '-gtoeq' in st:
-        st = st.split('-gtoeq')
-        run = greaterthanorequal(st[0],st[1])
+    run = False
+    while run != True:
+        if '-eq' in st:
+            st = st.split('-eq')    
+            run = equalto(st[0],st[1])
+        elif '-neq' in st:
+            st = st.split('-neq')
+            run = notequalto(st[0], st[1])
+        elif '-gt' in st:
+            st = st.split('-gt')
+            run = greaterthan(st[0],st[1])
+        elif '-lt' in st:
+            st = st.split('-lt')
+            run = lessthan(st[0],st[1])
+        elif '-ltoeq' in st:
+            st = st.split('-ltoeq')
+            run = lessthanorequal(st[0],st[1])
+        elif '-gtoeq' in st:
+            st = st.split('-gtoeq')
+            run = greaterthanorequal(st[0],st[1])
     if run == True:
-        execute_command(cmd)
-    else:
-        pass
+        if cmd == 'help':
+            commands.ash_help()
+        elif cmd == 'exit':
+            print('ash:bye!')
+            exit()
+        elif cmd == 'clear':
+            commands.clear()
+        elif cmd == 'ver':
+            print(ver)
+        elif '==' in cmd:
+            inp = cmd.split('==')
+            print(commands.equalto(inp[0], inp[1]))
+        elif '!=' in cmd:
+            inp = cmd.split('!=')
+            print(commands.notequalto(inp[0], inp[1]))
+        elif '>' in cmd:
+            inp = cmd.split('>')
+            print(commands.greaterthan(inp[0], inp[1]))
+        elif '<' in cmd:
+            inp = cmd.split('<')
+            print(commands.lessthan(inp[0],inp[1]))
+        elif '<=' in cmd:
+            inp = cmd.split('<=')
+            print(commands.lessthanorequal(inp[0],inp[1]))
+        elif 'if' in cmd:
+            commands.ifstatement(cmd)
+        else:
+            commands.execute_command(cmd)
