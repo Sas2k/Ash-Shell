@@ -13,6 +13,7 @@ help "obj/cmd" - displays the help message for that command or object
 put "string" - prints the string
 put [int] - prints the interger inside the brackets
 exit - exits the shell
+ver - displays the version
 [Note: The Spaces Matter]
 [Note: When using the help command put the "" aroung the command or object your trying to get help]
 ===gates===
@@ -142,7 +143,7 @@ def execute_command(command):
                 elif command[cmd+1] == '"and gate"':
                     print(term.lightgreen('help: AND Gate does the commands even if one or more of those are unsuccessful\nExample: cmd1 | cmd2'))
                 elif command[cmd+1] == '"Math"':
-                    print(term.lightgreen('help:Simple Arithmetic commands\nExample: 1[+]1, 1[-]1, 1[/]1, 1[*]1'))
+                    print(term.lightgreen('help:Simple Arithmetic commands\nExample: put 1[+]1, put 1[-]1, put 1[/]1, put 1[*]1'))
                 elif command[cmd+1] == '"eql"':
                     print(term.lightgreen('help: the equal sign just prints out whether it is true or false\nExample:1==1'))
                 elif command[cmd+1] == '"if"':
@@ -222,25 +223,24 @@ def ifstatement(statement):
     cmd = statement[2]
     st = str(st)
     run = False
-    while run != True:
-        if '-eq' in st:
-            st = st.split('-eq')    
-            run = equalto(st[0],st[1])
-        elif '-neq' in st:
-            st = st.split('-neq')
-            run = notequalto(st[0], st[1])
-        elif '-gt' in st:
-            st = st.split('-gt')
-            run = greaterthan(st[0],st[1])
-        elif '-lt' in st:
-            st = st.split('-lt')
-            run = lessthan(st[0],st[1])
-        elif '-ltoeq' in st:
-            st = st.split('-ltoeq')
-            run = lessthanorequal(st[0],st[1])
-        elif '-gtoeq' in st:
-            st = st.split('-gtoeq')
-            run = greaterthanorequal(st[0],st[1])
+    if '-eq' in st:
+        st = st.split('-eq')    
+        run = equalto(st[0],st[1])
+    elif '-neq' in st:
+        st = st.split('-neq')
+        run = notequalto(st[0], st[1])
+    elif '-gt' in st:
+        st = st.split('-gt')
+        run = greaterthan(st[0],st[1])
+    elif '-lt' in st:
+        st = st.split('-lt')
+        run = lessthan(st[0],st[1])
+    elif '-ltoeq' in st:
+        st = st.split('-ltoeq')
+        run = lessthanorequal(st[0],st[1])
+    elif '-gtoeq' in st:
+        st = st.split('-gtoeq')
+        run = greaterthanorequal(st[0],st[1])
     if run == True:
         if cmd == 'help':
             commands.ash_help()
@@ -266,6 +266,9 @@ def ifstatement(statement):
         elif '<=' in cmd:
             inp = cmd.split('<=')
             print(commands.lessthanorequal(inp[0],inp[1]))
+        elif '>=' in cmd:
+            inp = cmd.split('>=')
+            print(commands.greaterthanorequal(inp[0], inp[1]))
         elif 'if' in cmd:
             commands.ifstatement(cmd)
         else:

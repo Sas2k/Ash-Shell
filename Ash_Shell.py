@@ -3,7 +3,7 @@ import commands
 import blessed
 
 term = blessed.Terminal()
-ver = 'v2.5'
+ver = 'V.dev.3.1'
 
 def main():
     while True:
@@ -32,6 +32,9 @@ def main():
         elif '<=' in inp:
             inp = inp.split('<=')
             print(commands.lessthanorequal(inp[0],inp[1]))
+        elif '>=' in inp:
+            inp = inp.split('>=')
+            print(commands.greaterthanorequal(inp[0], inp[1]))
         elif 'if' in inp:
             commands.ifstatement(inp)
         else:
