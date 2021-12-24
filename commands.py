@@ -31,8 +31,8 @@ ver - displays the version
 != - not equal to[nql]
 > - greater than[gt]
 < - less than[lt]
->= - greater than or equal to[gteql]
-<= - less than or equal to[lteql]
+(>=) - greater than or equal to[gteql]
+(<=) - less than or equal to[lteql]
 **********
 ===Statement===
 if#statement#command - the command is run if the statement is true [if]
