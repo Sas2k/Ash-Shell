@@ -273,3 +273,5 @@ def ifstatement(statement):
             commands.ifstatement(cmd)
         else:
             commands.execute_command(cmd)
+    else:
+        return 
