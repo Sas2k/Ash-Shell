@@ -4,7 +4,7 @@ import blessed
 
 term = blessed.Terminal()
 ver = 'V.dev.3.1'
-
+#To run it if it's not running type 'python Ash_Shell.py'
 def main():
     while True:
         inp = input('# ')
