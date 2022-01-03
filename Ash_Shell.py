@@ -29,12 +29,6 @@ def main():
         elif '<' in inp:
             inp = inp.split('<')
             print(commands.lessthan(inp[0],inp[1]))
-        elif '(<=)' in inp:
-            inp = inp.split('(<=)')
-            print(commands.lessthanorequal(inp[0],inp[1]))
-        elif '(>=)' in inp:
-            inp = inp.split('(>=)')
-            print(commands.greaterthanorequal(inp[0], inp[1]))
         elif 'if' in inp:
             commands.ifstatement(inp)
         else:
